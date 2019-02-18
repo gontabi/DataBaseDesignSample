@@ -26,7 +26,6 @@ Things you may want to cover:
 ## membersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body_id|text|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
@@ -45,15 +44,19 @@ Things you may want to cover:
 ## Groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group|string|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
 ### Association
 - has_many :group
 
 ## messeges
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, foreign_key: true|
-|messege|text|null: false, foreign_key: true|
+|body|text|null: false, foreign_key: true|
+|image|text|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :name
 - has_many :messege
+- belongs_to :group
+- belongs_to :user
