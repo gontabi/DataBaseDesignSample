@@ -32,31 +32,33 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :group
 
-## userテーブル
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
-|e-mail|string|null: false, foreign_key: true|
+|name|string|null: false|
+|e-mail|string|null: false|
 ### Association
-- has_many :name
-- has_many :e-mail
+- has_many :members
+- has_many :groups, though: :members
+- has_many :messages, though: :members
 
 ## Groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 ### Association
-- has_many :name
+- has_many :members
+- has_many :messages, though: :members
+- has_many :users, though: :members
 
-## messeges
+## messages
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false, foreign_key: true|
-|image|text|null: false, foreign_key: true|
+|body|text|null: false|
+|image|string|null: false|
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many :body
-- has_many :image
-- belongs_to :group
+- has_many :members
 - belongs_to :user
+- belongs_to :group
